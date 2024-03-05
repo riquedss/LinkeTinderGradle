@@ -10,6 +10,20 @@ class Pessoa {
     }
 
     def save() {
-        Bd.pessoas << this
+        boolean pessoaValida = this.valida()
+
+        if(pessoaValida){
+            Bd.pessoas << this
+        }
+
+        return pessoaValida
+    }
+
+    private boolean valida(){
+        if(!this.nome){
+            return false
+        }
+
+        return true
     }
 }
